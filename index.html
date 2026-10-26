@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Service Request Portal</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Service Request Portal</h1>
+    <p>Raise a request and track its status</p>
+  </header>
+
+  <main>
+    <!-- Request form -->
+    <section class="card">
+      <h2>New Service Request</h2>
+      <form id="requestForm" novalidate>
+        <div class="row">
+          <div class="field">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" placeholder="Enter your name" />
+            <small class="error" id="nameError"></small>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="you@example.com" />
+            <small class="error" id="emailError"></small>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" placeholder="10-digit number" />
+            <small class="error" id="phoneError"></small>
+          </div>
+          <div class="field">
+            <label for="category">Service Category</label>
+            <select id="category">
+              <option value="">-- Select --</option>
+              <option>Electrical</option>
+              <option>Plumbing</option>
+              <option>Internet / Network</option>
+              <option>Computer Hardware</option>
+              <option>Cleaning</option>
+              <option>Other</option>
+            </select>
+            <small class="error" id="categoryError"></small>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Priority</label>
+          <div class="radios">
+            <label><input type="radio" name="priority" value="Low" /> Low</label>
+            <label><input type="radio" name="priority" value="Medium" checked /> Medium</label>
+            <label><input type="radio" name="priority" value="High" /> High</label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="description">Problem Description</label>
+          <textarea id="description" rows="4" placeholder="Describe the issue (min 10 characters)"></textarea>
+          <small class="error" id="descriptionError"></small>
+        </div>
+
+        <button type="submit" class="btn primary">Submit Request</button>
+        <button type="reset" class="btn">Clear</button>
+      </form>
+    </section>
+
+    <!-- Request list -->
+    <section class="card">
+      <div class="list-head">
+        <h2>All Requests</h2>
+        <select id="filter">
+          <option value="All">All</option>
+          <option value="Pending">Pending</option>
+          <option value="In Progress">In Progress</option>
+          <option value="Resolved">Resolved</option>
+        </select>
+      </div>
+
+      <div class="stats">
+        <span>Total: <b id="statTotal">0</b></span>
+        <span>Pending: <b id="statPending">0</b></span>
+        <span>In Progress: <b id="statProgress">0</b></span>
+        <span>Resolved: <b id="statResolved">0</b></span>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th><th>Name</th><th>Category</th><th>Priority</th>
+              <th>Description</th><th>Date</th><th>Status</th><th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="requestBody"></tbody>
+        </table>
+      </div>
+      <p id="emptyMsg" class="empty">No service requests yet.</p>
+    </section>
+  </main>
+
+  <footer>Essentials of Web Programming – Mini Project</footer>
+  <script src="script.js"></script>
+</body>
+</html>
